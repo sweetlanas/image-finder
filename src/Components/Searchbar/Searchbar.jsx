@@ -1,4 +1,4 @@
-const Searchbar = ({ onSetQuery, query, onSubmit }) => {
+const Searchbar = ({ onSetQuery, query, onSubmit, onRemoveText }) => {
   return (
     <header className="Searchbar">
       <form onSubmit={onSubmit} className="SearchForm">
@@ -11,7 +11,7 @@ const Searchbar = ({ onSetQuery, query, onSubmit }) => {
           autoFocus
           placeholder="Search images and photos"
         />
-        <button type="submit" className="SearchForm-button">
+        <button onClick={onRemoveText} type="submit" className="SearchForm-button">
           <span className="SearchForm-button-label">Search</span>
         </button>
       </form>

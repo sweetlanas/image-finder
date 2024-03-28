@@ -5,7 +5,9 @@ import ImageGallery from "./Components/ImageGallery/ImageGallery";
 import Button from "./Components/Button/Button";
 import Modal from "./Components/Modal/Modal";
 import Loader from "./Components/Loader/Loader";
+import StartText from "./Components/StartPage/StartPage";
 import getPictures from "./helpers/fetch";
+
 
 function App() {
   const [query, setQuery] = useState("");
@@ -13,6 +15,7 @@ function App() {
   const [images, setImages] = useState([]);
   const [modal, setModal] = useState("");
   const [loader, setLoader] = useState(false);
+  const [isShowText, setIsShowText] = useState(true);
 
   const closeModalByEsc = (e) => {
     if (e.key === "Escape") {
@@ -69,13 +72,19 @@ function App() {
     setModal("");
   };
 
+  const hendleRemoveText = () => { 
+    setIsShowText(false);
+  }
+
   return (
     <div className="App">
       <Searchbar
         query={query}
         onSetQuery={handleSetQuery}
         onSubmit={hendleGetImages}
+        onRemoveText={hendleRemoveText}
       />
+      {isShowText && <StartText />}
       {loader && <Loader />}
       <ImageGallery showModal={hendleShowModal} images={images} />
       {!!images.length && <Button onLoadMore={hendleLoadMore} />}

@@ -224,3 +224,8 @@ img {
     letter-spacing: 0.02857em;
     text-transform: uppercase;
 }
+
+.start-text{
+    margin: 0 auto;
+    color: #334c5c;
+}
